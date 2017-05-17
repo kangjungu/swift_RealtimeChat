@@ -9,15 +9,17 @@
 import Foundation
 import UIKit
 import Firebase
-struct User{
+
+class User: NSObject {
     
-    let name:String
-    let email:String
-    let id:String
-    var profilePic:UIImage
+    //MARK: Properties
+    let name: String
+    let email: String
+    let id: String
+    var profilePic: UIImage
     
     //MARK: Methods
-    static func registerUser(withName: String, email: String, password: String, profilePic: UIImage, completion: @escaping (Bool) -> Swift.Void) {
+    class func registerUser(withName: String, email: String, password: String, profilePic: UIImage, completion: @escaping (Bool) -> Swift.Void) {
         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
             if error == nil {
                 user?.sendEmailVerification(completion: nil)
@@ -43,7 +45,7 @@ struct User{
         })
     }
     
-    static func loginUser(withEmail: String, password: String, completion: @escaping (Bool) -> Swift.Void) {
+    class func loginUser(withEmail: String, password: String, completion: @escaping (Bool) -> Swift.Void) {
         FIRAuth.auth()?.signIn(withEmail: withEmail, password: password, completion: { (user, error) in
             if error == nil {
                 let userInfo = ["email": withEmail, "password": password]
@@ -55,7 +57,7 @@ struct User{
         })
     }
     
-    static func logOutUser(completion: @escaping (Bool) -> Swift.Void) {
+    class func logOutUser(completion: @escaping (Bool) -> Swift.Void) {
         do {
             try FIRAuth.auth()?.signOut()
             UserDefaults.standard.removeObject(forKey: "userInformation")
@@ -65,7 +67,7 @@ struct User{
         }
     }
     
-    static func info(forUserID: String, completion: @escaping (User) -> Swift.Void) {
+    class func info(forUserID: String, completion: @escaping (User) -> Swift.Void) {
         FIRDatabase.database().reference().child("users").child(forUserID).child("credentials").observeSingleEvent(of: .value, with: { (snapshot) in
             if let data = snapshot.value as? [String: String] {
                 let name = data["name"]!
@@ -82,7 +84,7 @@ struct User{
         })
     }
     
-    static func downloadAllUsers(exceptID: String, completion: @escaping (User) -> Swift.Void) {
+    class func downloadAllUsers(exceptID: String, completion: @escaping (User) -> Swift.Void) {
         FIRDatabase.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
             let id = snapshot.key
             let data = snapshot.value as! [String: Any]
@@ -102,17 +104,20 @@ struct User{
         })
     }
     
-    static func checkUserVerification(completion: @escaping (Bool) -> Swift.Void) {
+    class func checkUserVerification(completion: @escaping (Bool) -> Swift.Void) {
         FIRAuth.auth()?.currentUser?.reload(completion: { (_) in
             let status = (FIRAuth.auth()?.currentUser?.isEmailVerified)!
             completion(status)
         })
     }
     
-    init(name:String,email:String,id:String,profilePic:UIImage) {
+    
+    //MARK: Inits
+    init(name: String, email: String, id: String, profilePic: UIImage) {
         self.name = name
         self.email = email
         self.id = id
         self.profilePic = profilePic
     }
 }
+

@@ -39,11 +39,23 @@ class LandingVC: UIViewController {
             guard let password = userInformation["password"] as? String else{
                 return
             }
-            
+            User.loginUser(withEmail: email, password: password, completion: {
+                [weak weakSelf = self] (status) in
+                DispatchQueue.main.async{
+                    if status == true {
+                        weakSelf?.pushTo(viewController: .conversations)
+                    }else{
+                        weakSelf?.pushTo(viewController: .welcome)
+                    }
+                    weakSelf = nil
+                }
+            })
+        }else{
+            self.pushTo(viewController: .welcome)
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 }

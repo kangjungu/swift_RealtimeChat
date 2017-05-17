@@ -21,7 +21,7 @@ extension UIColor{
     }
 }
 
-class RoundImageView:UIImageView{
+class RoundedImageView:UIImageView{
     override func layoutSubviews() {
         super.layoutSubviews()
         let radius:CGFloat = self.bounds.width/2.0
