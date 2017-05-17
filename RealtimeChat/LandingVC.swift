@@ -10,26 +10,40 @@ import UIKit
 
 class LandingVC: UIViewController {
 
+    //세로 방향의 뷰만 가능하게함
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask{
+        get{
+            return .portrait
+        }
+    }
+    
+    func pushTo(viewController:ViewControllerType){
+        switch viewController {
+        case .conversations:
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "Navigation")
+            as! NavVC
+            self.present(vc, animated: false, completion: nil)
+        case .welcome:
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "Welcome") as! WelcomeVC
+            self.present(vc, animated: false, completion: nil)
+        }
+    }
+    
+    //MARK: 과거 로그인한 사용자인지 아닌지 확인
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let userInformation = UserDefaults.standard.dictionary(forKey: "userInformation"){
+            guard let email = userInformation["email"] as? String else{
+                return
+            }
+            guard let password = userInformation["password"] as? String else{
+                return
+            }
+            
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
