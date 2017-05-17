@@ -44,7 +44,7 @@
         <!--Chat-->
         <scene sceneID="ff9-Z2-Pdx">
             <objects>
-                <viewController storyboardIdentifier="Chat" title="Chat" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yTj-zC-TdJ" customClass="ChatVC" customModule="RealtimeChat" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Chat" title="Chat" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yTj-zC-TdJ" customClass="ChatVC" customModule="RealtimeChat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jdd-FL-8UG"/>
                         <viewControllerLayoutGuide type="bottom" id="5pY-2r-q4g"/>
@@ -316,7 +316,7 @@
         <!--NavVC-->
         <scene sceneID="XAG-V5-xNo">
             <objects>
-                <navigationController storyboardIdentifier="Navigation" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xsD-Gu-2IB" customClass="NavVC" customModule="RealtimeChat" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Navigation" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xsD-Gu-2IB" customClass="NavVC" customModule="RealtimeChat" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vq3-fW-fg6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -448,7 +448,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="397"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AYA-gD-bJU" customClass="RoundedImageView" customModule="RealtimeChat" customModuleProvider="target">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AYA-gD-bJU" customClass="RoundedImageView" customModule="RealtimeChat">
                             <rect key="frame" x="93" y="41" width="190" height="190"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="AYA-gD-bJU" secondAttribute="height" multiplier="1:1" id="Y34-NM-N6h"/>
@@ -603,7 +603,7 @@
         <!-- -->
         <scene sceneID="BXf-1P-gxS">
             <objects>
-                <viewController storyboardIdentifier="Conversations" title=" " useStoryboardIdentifierAsRestorationIdentifier="YES" id="uuW-yV-UDW" customClass="ConversationsVC" customModule="RealtimeChat" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Conversations" title=" " useStoryboardIdentifierAsRestorationIdentifier="YES" id="uuW-yV-UDW" customClass="ConversationsVC" customModule="RealtimeChat" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LOO-fC-IBu"/>
                         <viewControllerLayoutGuide type="bottom" id="slu-Ur-6fl"/>
